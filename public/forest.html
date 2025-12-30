@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>DUNIA GAMEKU - ORI AND THE BLIND FOREST</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header>
+    <nav aria-label="Main navigation">
+      <div class="logo">DUNIA GAMEKU</div>
+      
+      <ul class="nav-links">
+        <li><a href="beranda.html">BERANDA</a></li>
+        <li>
+          <details class="dropdown">
+            <summary class="nav-summary" aria-haspopup="true" aria-expanded="false">KATEGORI ▾</summary>
+            <div class="dropdown-box" role="menu" aria-label="Kategori">
+              <a href="multiplayer.html" role="menuitem">Multiplayer</a>
+              <a href="puzzle.html" role="menuitem">Puzzle</a>
+              <a href="adventure.html" role="menuitem">Adventure</a>
+            </div>
+          </details>
+        </li>
+        <li><a href="ulasann.html">ULASAN</a></li>
+        <li><a href="profile.html">PROFIL</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main class="container">
+    <!-- Tombol kembali -->
+    <a href="adventure.html" class="back-link">← Kembali ke kategori Adventure</a>
+
+    <!-- Konten detail game -->
+    <article class="game-detail">
+      <!-- SLIDER: VIDEO + GAMBAR -->
+      <div class="media-slider">
+        <!-- Tombol panah kiri -->
+        <button class="slider-btn prev" aria-label="Sebelumnya">❮</button>
+
+        <!-- Isi slide -->
+        <div class="slider-wrapper">
+          <!-- Slide 1: VIDEO LOKAL TANPA YOUTUBE -->
+          <div class="slide active">
+            <video class="game-video" controls autoplay muted loop>
+              <!-- GANTI path ini sesuai lokasi file videomu -->
+              <source src="video/ml.mp4" type="video/mp4">
+              Browser kamu tidak mendukung pemutar video.
+            </video>
+          </div>
+
+          <!-- Slide 2: GAMBAR ORI AND THE BLIND FOREST -->
+          <div class="slide">
+            <img src="gamea/forsest.jpg" alt="ORI AND THE BLIND FOREST">
+          </div>
+        </div>
+
+        <!-- Tombol panah kanan -->
+        <button class="slider-btn next" aria-label="Berikutnya">❯</button>
+      </div>
+
+      <!-- TEKS DESKRIPSI -->
+      <h1>ORI AND THE BLIND FOREST</h1>
+      <p class="game-subtitle">
+     Ori and the Blind Forest adalah game platformer action-adventure yang menampilkan perjalanan emosional karakter kecil bernama Ori di hutan mistis. Pemain menjelajahi dunia penuh teka-teki, platform menantang, dan musuh sambil memanfaatkan kemampuan Ori yang unik. Game ini menekankan eksplorasi, refleks, dan penyelesaian puzzle dalam suasana visual dan musik yang indah.
+        <h2>Fitur Utama</h2>
+        <ul>
+          <li>Gameplay platformer dengan elemen action dan puzzle.</li>
+          <li>Dunia visual artistik penuh warna dan detail.</li>
+          <li>Cerita emosional yang mendalam.</li>
+          <li>Karakter Ori memiliki kemampuan unik untuk bergerak dan melawan.</li>
+        </ul>
+      </section>
+
+      <section class="game-section">
+        <h2>Cara Main Singkat</h2>
+        <ol>
+          <li>Kendalikan Ori untuk berlari, melompat, dan menyerang.</li>
+          <li>Jelajahi hutan dan selesaikan teka-teki.</li>
+          <li>Hindari musuh dan jebakan.</li>
+          <li>Gunakan kemampuan khusus Ori untuk maju ke level berikutnya.</li>
+        </ol>
+      </section>
+
+      <section class="game-section">
+        <h2>Info Game</h2>
+        <ul>
+          <li><strong>Genre:</strong>Action / Adventure / Platformer</li>
+          <li><strong>Mode:</strong>Offline</li>
+          <li><strong>Platform:</strong>PC, Xbox, Nintendo Switch</li>
+          <li><strong>Rating:</strong><span class="rating-stars"> ★★★★ 4</span></li>
+        </ul>
+      </section>
+    </article>
+  </main>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      const slider = document.querySelector('.media-slider');
+      if (!slider) return;
+
+      const slides = slider.querySelectorAll('.slide');
+      const prevBtn = slider.querySelector('.prev');
+      const nextBtn = slider.querySelector('.next');
+      let current = 0;
+
+      function showSlide(index) {
+        slides.forEach((s, i) => {
+          s.classList.toggle('active', i === index);
+        });
+      }
+
+      prevBtn.addEventListener('click', () => {
+        current = (current - 1 + slides.length) % slides.length;
+        showSlide(current);
+      });
+
+      nextBtn.addEventListener('click', () => {
+        current = (current + 1) % slides.length;
+        showSlide(current);
+      });
+    });
+  </script>
+   <footer>
+    @2025 - Helo Liaa
+  </footer>
+</body>
+</html>

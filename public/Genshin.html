@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>DUNIA GAMEKU - GENSHIN IMPACT</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header>
+    <nav aria-label="Main navigation">
+      <div class="logo">DUNIA GAMEKU</div>
+      
+      <ul class="nav-links">
+        <li><a href="beranda.html">BERANDA</a></li>
+        <li>
+          <details class="dropdown">
+            <summary class="nav-summary" aria-haspopup="true" aria-expanded="false">KATEGORI ▾</summary>
+            <div class="dropdown-box" role="menu" aria-label="Kategori">
+              <a href="multiplayer.html" role="menuitem">Multiplayer</a>
+              <a href="puzzle.html" role="menuitem">Puzzle</a>
+              <a href="adventure.html" role="menuitem">Adventure</a>
+            </div>
+          </details>
+        </li>
+        <li><a href="ulasann.html">ULASAN</a></li>
+        <li><a href="profile.html">PROFIL</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main class="container">
+    <!-- Tombol kembali -->
+    <a href="adventure.html" class="back-link">← Kembali ke kategori Adventure</a>
+
+    <!-- Konten detail game -->
+    <article class="game-detail">
+      <!-- SLIDER: VIDEO + GAMBAR -->
+      <div class="media-slider">
+        <!-- Tombol panah kiri -->
+        <button class="slider-btn prev" aria-label="Sebelumnya">❮</button>
+
+        <!-- Isi slide -->
+        <div class="slider-wrapper">
+          <!-- Slide 1: VIDEO LOKAL TANPA YOUTUBE -->
+          <div class="slide active">
+            <video class="game-video" controls autoplay muted loop>
+              <!-- GANTI path ini sesuai lokasi file videomu -->
+              <source src="video/Genshin Impact.mp4" type="video/mp4">
+              Browser kamu tidak mendukung pemutar video.
+            </video>
+          </div>
+
+          <!-- Slide 2: GAMBAR GENSHIN IMPACT -->
+          <div class="slide">
+            <img src="gamea/genshin.jpg" alt="GENSHIN IMPACT">
+          </div>
+        </div>
+
+        <!-- Tombol panah kanan -->
+        <button class="slider-btn next" aria-label="Berikutnya">❯</button>
+      </div>
+
+      <!-- TEKS DESKRIPSI -->
+      <h1>SWORDIGO</h1>
+      <p class="game-subtitle">
+     Genshin Impact adalah game action RPG open-world bergaya anime yang memungkinkan pemain menjelajahi dunia fantasi bernama Teyvat. Pemain dapat berganti karakter dengan elemen berbeda seperti api, air, angin, dan listrik untuk bertarung serta memecahkan puzzle. Game ini menekankan eksplorasi, cerita, dan kombinasi strategi elemen dalam pertempuran.
+      <section class="game-section">
+        <h2>Fitur Utama</h2>
+        <ul>
+          <li>Dunia open-world luas dan bebas dijelajahi.</li>
+          <li>Karakter dengan elemen dan kemampuan unik.</li>
+          <li>Sistem pertarungan berbasis kombinasi elemen.</li>
+          <li>Cerita mendalam dengan visual anime yang menarik.</li>
+        </ul>
+      </section>
+
+      <section class="game-section">
+        <h2>Cara Main Singkat</h2>
+        <ol>
+          <li>Jelajahi dunia dan selesaikan misi.</li>
+          <li>Gunakan karakter dengan elemen berbeda.</li>
+          <li>Kombinasikan elemen untuk serangan lebih kuat.</li>
+          <li>Kumpulkan item dan tingkatkan karakter.</li>
+        </ol>
+      </section>
+
+      <section class="game-section">
+        <h2>Info Game</h2>
+        <ul>
+          <li><strong>Genre:</strong>Action RPG / Open World</li>
+          <li><strong>Mode:</strong>Single Player</li>
+          <li><strong>Platform:</strong>Android, iOS, PC, PlayStation</li>
+          <li><strong>Rating:</strong><span class="rating-stars"> ★★★★ 4</span></li>
+        </ul>
+      </section>
+    </article>
+  </main>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      const slider = document.querySelector('.media-slider');
+      if (!slider) return;
+
+      const slides = slider.querySelectorAll('.slide');
+      const prevBtn = slider.querySelector('.prev');
+      const nextBtn = slider.querySelector('.next');
+      let current = 0;
+
+      function showSlide(index) {
+        slides.forEach((s, i) => {
+          s.classList.toggle('active', i === index);
+        });
+      }
+
+      prevBtn.addEventListener('click', () => {
+        current = (current - 1 + slides.length) % slides.length;
+        showSlide(current);
+      });
+
+      nextBtn.addEventListener('click', () => {
+        current = (current + 1) % slides.length;
+        showSlide(current);
+      });
+    });
+  </script>
+   <footer>
+    @2025 - Helo Liaa
+  </footer>
+</body>
+</html>

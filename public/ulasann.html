@@ -1,0 +1,159 @@
+<!doctype html>
+<html lang="id">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>DUNIA GAMEKU - Ulasan</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body class="ulasan-page">
+  <header>
+    <nav aria-label="Main navigation">
+      <div class="logo">DUNIA GAMEKU</div>
+    
+      <ul class="nav-links">
+        <li><a href="beranda.html">BERANDA</a></li>
+        <li>
+          <details class="dropdown">
+            <summary class="nav-summary">KATEGORI ▾</summary>
+            <div class="dropdown-box">
+              <a href="multiplayer.html">Multiplayer</a>
+              <a href="puzzle.html">Puzzle</a>
+              <a href="adventure.html">Adventure</a>
+            </div>
+          </details>
+        </li>
+        <li><a class="active" href="ulasann.html" aria-current="page">ULASAN</a></li>
+        <li><a href="profile.html">PROFIL</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main class="review-page">
+    <div class="review-box" aria-labelledby="reviewTitle">
+      <h2 id="reviewTitle" style="text-align:center;margin-top:0">Berikan Ulasanmu</h2>
+
+      <textarea id="comment-input" placeholder="Tulis ulasan..." aria-label="Tulis ulasan"></textarea>
+
+      <div class="btn-row">
+        <button id="send-btn">KIRIM</button>
+        <button id="clear-all" class="ghost">HAPUS SEMUA</button>
+        <button id="toggleCommentBtn" class="ghost" aria-expanded="true">Tampilkan/ Sembunyikan Panel Komentar</button>
+      </div>
+    </div>
+
+    <aside class="comment-display" id="commentBox" aria-live="polite" aria-label="Komentar pengguna">
+      <h3>Komentar Pengguna</h3>
+      <div id="commentList" aria-atomic="true"></div>
+    </aside>
+  </main>
+
+<script>
+/* Unified comment system
+   Key: 'dg_comments' in localStorage
+   Features: add, edit, delete, clear all, toggle panel
+*/
+(() => {
+  const KEY = 'dg_comments';
+  const input = document.getElementById('comment-input');
+  const sendBtn = document.getElementById('send-btn');
+  const clearBtn = document.getElementById('clear-all');
+  const commentListEl = document.getElementById('commentList');
+  const commentBox = document.getElementById('commentBox');
+  const toggleBtn = document.getElementById('toggleCommentBtn');
+
+  let comments = JSON.parse(localStorage.getItem(KEY)) || [];
+
+  function save(){
+    localStorage.setItem(KEY, JSON.stringify(comments));
+  }
+
+  function render(){
+    commentListEl.innerHTML = '';
+    if (comments.length === 0) {
+      commentListEl.innerHTML = '<p style="text-align:center;color:rgba(255,255,255,0.6)">Belum ada komentar.</p>';
+      return;
+    }
+    comments.slice().reverse().forEach((text, idxReverse) => {
+      // idxReverse is index from reversed list; map to original index:
+      const idx = comments.length - 1 - idxReverse;
+      const item = document.createElement('div');
+      item.className = 'comment-item';
+
+      const span = document.createElement('div');
+      span.className = 'comment-text';
+      span.textContent = text;
+
+      const actions = document.createElement('div');
+      actions.className = 'comment-actions';
+
+      const editBtn = document.createElement('button');
+      editBtn.className = 'icon-btn';
+      editBtn.title = 'Edit komentar';
+      editBtn.innerText = '✎';
+      editBtn.addEventListener('click', () => {
+        const newText = prompt('Edit komentar:', text);
+        if (newText !== null) {
+          const trimmed = newText.trim();
+          if (trimmed === '') {
+            alert('Komentar tidak boleh kosong.');
+            return;
+          }
+          comments[idx] = trimmed;
+          save();
+          render();
+        }
+      });
+
+      const delBtn = document.createElement('button');
+      delBtn.className = 'icon-btn';
+      delBtn.title = 'Hapus komentar';
+      delBtn.innerText = '🗑';
+      delBtn.addEventListener('click', () => {
+        if (!confirm('Hapus komentar ini?')) return;
+        comments.splice(idx, 1);
+        save();
+        render();
+      });
+
+      actions.appendChild(editBtn);
+      actions.appendChild(delBtn);
+
+      item.appendChild(span);
+      item.appendChild(actions);
+
+      commentListEl.appendChild(item);
+    });
+  }
+
+  sendBtn.addEventListener('click', () => {
+    const text = input.value.trim();
+    if (!text) {
+      alert('Tulis dulu komentarnya ya.');
+      return;
+    }
+    comments.push(text);
+    save();
+    input.value = '';
+    render();
+  });
+
+  clearBtn.addEventListener('click', () => {
+    if (!confirm('Yakin ingin menghapus semua komentar?')) return;
+    comments = [];
+    save();
+    render();
+  });
+
+  toggleBtn.addEventListener('click', () => {
+    const hidden = commentBox.style.display === 'none';
+    commentBox.style.display = hidden ? 'block' : 'none';
+    toggleBtn.setAttribute('aria-expanded', hidden ? 'true' : 'false');
+  });
+
+  // render on load
+  render();
+})();
+</script>
+</body>
+</html>

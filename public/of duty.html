@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>DUNIA GAMEKU - CALL OF DUTY MOBILE</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header>
+    <nav aria-label="Main navigation">
+      <div class="logo">DUNIA GAMEKU</div>
+    
+      </div>
+      <ul class="nav-links">
+        <li><a href="beranda.html">BERANDA</a></li>
+        <li>
+          <details class="dropdown">
+            <summary class="nav-summary" aria-haspopup="true" aria-expanded="false">KATEGORI ▾</summary>
+            <div class="dropdown-box" role="menu" aria-label="Kategori">
+              <a href="multiplayer.html" role="menuitem">Multiplayer</a>
+              <a href="puzzle.html" role="menuitem">Puzzle</a>
+              <a href="adventure.html" role="menuitem">Adventure</a>
+            </div>
+          </details>
+        </li>
+        <li><a href="ulasann.html">ULASAN</a></li>
+        <li><a href="profile.html">PROFIL</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main class="container">
+    <!-- Tombol kembali -->
+    <a href="multiplayer.html" class="back-link">← Kembali ke kategori Multiplayer</a>
+
+    <!-- Konten detail game -->
+    <article class="game-detail">
+      <!-- SLIDER: VIDEO + GAMBAR -->
+      <div class="media-slider">
+        <!-- Tombol panah kiri -->
+        <button class="slider-btn prev" aria-label="Sebelumnya">❮</button>
+
+        <!-- Isi slide -->
+        <div class="slider-wrapper">
+          <!-- Slide 1: VIDEO LOKAL TANPA YOUTUBE -->
+          <div class="slide active">
+            <video class="game-video" controls autoplay muted loop>
+              <!-- GANTI path ini sesuai lokasi file videomu -->
+              <source src="video/Call of Duty.mp4" type="video/mp4">
+              Browser kamu tidak mendukung pemutar video.
+            </video>
+          </div>
+
+          <!-- Slide 2: GAMBAR CALL OF DUTY MOBILE -->
+          <div class="slide">
+            <img src="gamea/of duty.jpg" alt="CALL OF DUTY MOBILE">
+          </div>
+        </div>
+
+        <!-- Tombol panah kanan -->
+        <button class="slider-btn next" aria-label="Berikutnya">❯</button>
+      </div>
+
+      <!-- TEKS DESKRIPSI -->
+      <h1>CALL OF DUTY MOBILE</h1>
+      <p class="game-subtitle">
+      Call of Duty: Mobile adalah game FPS yang menghadirkan pengalaman tembak-menembak cepat dan intens langsung di perangkat mobile. Game ini menawarkan mode Multiplayer klasik dan Battle Royale, lengkap dengan map ikonik, senjata modern, serta sistem kontrol yang responsif. COD Mobile menuntut refleks cepat, akurasi, dan kerja sama tim.
+
+      <section class="game-section">
+        <h2>Fitur Utama</h2>
+        <ul>
+          <li>Mode Multiplayer dan Battle Royale dalam satu game.</li>
+          <li>Map ikonik dari seri Call of Duty.</li>
+          <li>Beragam senjata dengan kustomisasi lengkap.</li>
+          <li>Event dan mode permainan yang rutin diperbarui.</li>
+        </ul>
+      </section>
+
+      <section class="game-section">
+        <h2>Cara Main Singkat</h2>
+        <ol>
+          <li>Pilih mode permainan (Multiplayer atau Battle Royale).</li>
+          <li>Atur loadout senjata sesuai gaya bermain.</li>
+          <li>Kalahkan lawan dan selesaikan objektif tim.</li>
+          <li>Kumpulkan XP untuk naik level dan membuka item baru.</li>
+        </ol>
+      </section>
+
+      <section class="game-section">
+        <h2>Info Game</h2>
+        <ul>
+          <li><strong>Genre:</strong>FPS / Action</li>
+          <li><strong>Mode:</strong> Online</li>
+          <li><strong>Platform:</strong> Android, iOS</li>
+          <li><strong>Rating:</strong><span class="rating-stars"> ★★★★ 4</span></li>
+        </ul>
+      </section>
+    </article>
+  </main>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      const slider = document.querySelector('.media-slider');
+      if (!slider) return;
+
+      const slides = slider.querySelectorAll('.slide');
+      const prevBtn = slider.querySelector('.prev');
+      const nextBtn = slider.querySelector('.next');
+      let current = 0;
+
+      function showSlide(index) {
+        slides.forEach((s, i) => {
+          s.classList.toggle('active', i === index);
+        });
+      }
+
+      prevBtn.addEventListener('click', () => {
+        current = (current - 1 + slides.length) % slides.length;
+        showSlide(current);
+      });
+
+      nextBtn.addEventListener('click', () => {
+        current = (current + 1) % slides.length;
+        showSlide(current);
+      });
+    });
+  </script>
+   <footer>
+    @2025 - Helo Liaa
+  </footer>
+</body>
+</html>

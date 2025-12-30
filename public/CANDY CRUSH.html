@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>DUNIA GAMEKU - CANDY CRUSH</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header>
+    <nav aria-label="Main navigation">
+      <div class="logo">DUNIA GAMEKU</div>
+
+      <!-- Tombol kapsul Tanya AI -->
+        <button
+          type="button"
+          class="ai-btn"
+          id="aiToggleBtn"
+          aria-label="Tanya AI"
+          aria-expanded="false"
+          aria-controls="aiPanel">
+          Tanya AI
+        </button>
+      </div>
+
+      <ul class="nav-links">
+        <li><a href="beranda.html">BERANDA</a></li>
+        <li>
+          <details class="dropdown">
+            <summary class="nav-summary" aria-haspopup="true" aria-expanded="false">KATEGORI ▾</summary>
+            <div class="dropdown-box" role="menu" aria-label="Kategori">
+              <a href="multiplayer.html" role="menuitem">Multiplayer</a>
+              <a href="puzzle.html" role="menuitem">Puzzle</a>
+              <a href="adventure.html" role="menuitem">Adventure</a>
+            </div>
+          </details>
+        </li>
+        <li><a href="ulasann.html">ULASAN</a></li>
+        <li><a href="profile.html">PROFIL</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main class="container">
+    <!-- Tombol kembali -->
+    <a href="puzzle.html" class="back-link">← Kembali ke kategori PUZZLE</a>
+
+    <!-- Konten detail game -->
+    <article class="game-detail">
+      <!-- SLIDER: VIDEO + GAMBAR -->
+      <div class="media-slider">
+        <!-- Tombol panah kiri -->
+        <button class="slider-btn prev" aria-label="Sebelumnya">❮</button>
+
+        <!-- Isi slide -->
+        <div class="slider-wrapper">
+          <!-- Slide 1: VIDEO LOKAL TANPA YOUTUBE -->
+          <div class="slide active">
+            <video class="game-video" controls autoplay muted loop>
+              <!-- GANTI path ini sesuai lokasi file videomu -->
+              <source src="video/ml.mp4" type="video/mp4">
+              Browser kamu tidak mendukung pemutar video.
+            </video>
+          </div>
+
+          <!-- Slide 2: GAMBAR Ball Sort -->
+          <div class="slide">
+            <img src="gamea/ball sort.jpg" alt="Ball Sort">
+          </div>
+        </div>
+
+        <!-- Tombol panah kanan -->
+        <button class="slider-btn next" aria-label="Berikutnya">❯</button>
+      </div>
+
+      <!-- TEKS DESKRIPSI -->
+      <h1>CANDY CRUSH</h1>
+      <p class="game-subtitle">
+      CANDY CRUSH
+      Candy Crush adalah game puzzle match-3 yang penuh warna, di mana pemain harus mencocokkan 
+      minimal tiga permen dengan warna yang sama untuk mengumpulkan poin dan menyelesaikan misi.
+      Setiap level memiliki target berbeda, seperti mengumpulkan jenis permen tertentu, 
+      menghancurkan jelly, atau menurunkan item ke bagian bawah papan. Game ini 
+      engandalkan strategi, perencanaan langkah, dan sedikit keberuntungan.
+      </p>
+
+      <section class="game-section">
+        <h2>Fitur Utama</h2>
+        <ul>
+          <li>Gameplay puzzle sederhana dan mudah dipahami.</li>
+          <li>Beragam level dengan tingkat kesulitan bertahap.</li>
+          <li>Tidak memiliki batas waktu (santai).</li>
+          <li>Cocok untuk melatih konsentrasi dan logika.</li>
+        </ul>
+      </section>
+
+      <section class="game-section">
+        <h2>Cara Main Singkat</h2>
+        <ol>
+          <li>Tukar posisi dua permen bersebelahan dengan menggeser (swipe).</li>
+          <li>Bentuk kombinasi minimal tiga permen dengan warna yang sama.</li>
+          <li>Buat kombinasi khusus (4 atau 5 permen) untuk mendapatkan permen spesial.</li>
+          <li>Dapat dimainkan sendiri atau terhubung dengan teman melalui akun media sosial.</li>
+        </ol>
+      </section>
+
+      <section class="game-section">
+        <h2>Info Game</h2>
+        <ul>
+          <li><strong>Genre:</strong> Puzzle / Match-3</li>
+          <li><strong>Mode:</strong> offline</li>
+          <li><strong>Platform:</strong> Android, iOS</li>
+          <li><strong>Rating:</strong><span class="rating-stars"> ★★★★ 4</span></li>
+        </ul>
+      </section>
+    </article>
+  </main>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      const slider = document.querySelector('.media-slider');
+      if (!slider) return;
+
+      const slides = slider.querySelectorAll('.slide');
+      const prevBtn = slider.querySelector('.prev');
+      const nextBtn = slider.querySelector('.next');
+      let current = 0;
+
+      function showSlide(index) {
+        slides.forEach((s, i) => {
+          s.classList.toggle('active', i === index);
+        });
+      }
+
+      prevBtn.addEventListener('click', () => {
+        current = (current - 1 + slides.length) % slides.length;
+        showSlide(current);
+      });
+
+      nextBtn.addEventListener('click', () => {
+        current = (current + 1) % slides.length;
+        showSlide(current);
+      });
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>DUNIA GAMEKU - Mobile Legends</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header>
+    <nav aria-label="Main navigation">
+      <div class="logo">DUNIA GAMEKU</div>
+     
+      <ul class="nav-links">
+        <li><a href="beranda.html">BERANDA</a></li>
+        <li>
+          <details class="dropdown">
+            <summary class="nav-summary" aria-haspopup="true" aria-expanded="false">KATEGORI ▾</summary>
+            <div class="dropdown-box" role="menu" aria-label="Kategori">
+              <a href="multiplayer.html" role="menuitem">Multiplayer</a>
+              <a href="puzzle.html" role="menuitem">Puzzle</a>
+              <a href="adventure.html" role="menuitem">Adventure</a>
+            </div>
+          </details>
+        </li>
+        <li><a href="ulasann.html">ULASAN</a></li>
+        <li><a href="profile.html">PROFIL</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main class="container">
+    <!-- Tombol kembali -->
+    <a href="multiplayer.html" class="back-link">← Kembali ke kategori Multiplayer</a>
+
+    <!-- Konten detail game -->
+    <article class="game-detail">
+      <!-- SLIDER: VIDEO + GAMBAR -->
+      <div class="media-slider">
+        <!-- Tombol panah kiri -->
+        <button class="slider-btn prev" aria-label="Sebelumnya">❮</button>
+
+        <!-- Isi slide -->
+        <div class="slider-wrapper">
+          <!-- Slide 1: VIDEO LOKAL TANPA YOUTUBE -->
+          <div class="slide active">
+            <video class="game-video" controls autoplay muted loop>
+              <!-- GANTI path ini sesuai lokasi file videomu -->
+              <source src="video/ml.mp4" type="video/mp4">
+              Browser kamu tidak mendukung pemutar video.
+            </video>
+          </div>
+
+          <!-- Slide 2: GAMBAR fortine -->
+          <div class="slide">
+            <img src="gamea/fornitet.jpg" alt="FORNITE">
+          </div>
+        </div>
+
+        <!-- Tombol panah kanan -->
+        <button class="slider-btn next" aria-label="Berikutnya">❯</button>
+      </div>
+
+      <!-- TEKS DESKRIPSI -->
+      <h1>FORTNITE</h1>
+      <p class="game-subtitle">
+        Fortnite adalah game battle royale yang dimainkan secara online, di mana pemain bertarung untuk menjadi yang terakhir bertahan hidup. 
+        Dalam satu pertandingan, hingga 100 pemain diterjunkan ke sebuah pulau dan harus saling mengalahkan menggunakan senjata, strategi, 
+        serta kemampuan membangun. Keunikan Fortnite terletak pada fitur building, yaitu pemain dapat membangun dinding, tangga, dan 
+        benteng untuk bertahan maupun menyerang lawan.
+      </p>
+
+      <section class="game-section">
+        <h2>Fitur Utama</h2>
+        <ul>
+          <li>Mode Battle Royale hingga 100 pemain.</li>
+          <li>Sistem building yang unik.</li>
+          <li>Beragam senjata dan item.</li>
+          <li>Bisa dimainkan solo, duo, atau squad.</li>
+        </ul>
+      </section>
+
+      <section class="game-section">
+        <h2>Cara Main Singkat</h2>
+        <ol>
+          <li>Pilih mode permainan (Solo, Duo, atau Squad).</li>
+          <li>Terjun ke pulau dan cari senjata serta item.</li>
+          <li>Bertahan hidup sambil mengalahkan lawan.</li>
+          <li>Gunakan bangunan untuk strategi bertahan dan menyerang.</li>
+        </ol>
+      </section>
+
+      <section class="game-section">
+        <h2>Info Game</h2>
+        <ul>
+          <li><strong>Genre:</strong> Battle Royale, Multiplayer</li>
+          <li><strong>Mode:</strong> Online</li>
+          <li><strong>Platform:</strong> PC, PlayStation, Xbox, Nintendo Switch</li>
+          <li><strong>Rating:</strong><span class="rating-stars"> ★★★★ 4</span></li>
+        </ul>
+      </section>
+    </article>
+  </main>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      const slider = document.querySelector('.media-slider');
+      if (!slider) return;
+
+      const slides = slider.querySelectorAll('.slide');
+      const prevBtn = slider.querySelector('.prev');
+      const nextBtn = slider.querySelector('.next');
+      let current = 0;
+
+      function showSlide(index) {
+        slides.forEach((s, i) => {
+          s.classList.toggle('active', i === index);
+        });
+      }
+
+      prevBtn.addEventListener('click', () => {
+        current = (current - 1 + slides.length) % slides.length;
+        showSlide(current);
+      });
+
+      nextBtn.addEventListener('click', () => {
+        current = (current + 1) % slides.length;
+        showSlide(current);
+      });
+    });
+  </script>
+   <footer>
+    @2025 - Helo Liaa
+  </footer>
+</body>
+</html>

@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>DUNIA GAMEKU - CANDY CRUSH</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header>
+    <nav aria-label="Main navigation">
+      <div class="logo">DUNIA GAMEKU</div>
+
+      <ul class="nav-links">
+        <li><a href="beranda.html">BERANDA</a></li>
+        <li>
+          <details class="dropdown">
+            <summary class="nav-summary" aria-haspopup="true" aria-expanded="false">KATEGORI ▾</summary>
+            <div class="dropdown-box" role="menu" aria-label="Kategori">
+              <a href="multiplayer.html" role="menuitem">Multiplayer</a>
+              <a href="puzzle.html" role="menuitem">Puzzle</a>
+              <a href="adventure.html" role="menuitem">Adventure</a>
+            </div>
+          </details>
+        </li>
+        <li><a href="ulasann.html">ULASAN</a></li>
+        <li><a href="profile.html">PROFIL</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main class="container">
+    <!-- Tombol kembali -->
+    <a href="puzzle.html" class="back-link">← Kembali ke kategori PUZZLE</a>
+
+    <!-- Konten detail game -->
+    <article class="game-detail">
+      <!-- SLIDER: VIDEO + GAMBAR -->
+      <div class="media-slider">
+        <!-- Tombol panah kiri -->
+        <button class="slider-btn prev" aria-label="Sebelumnya">❮</button>
+
+        <!-- Isi slide -->
+        <div class="slider-wrapper">
+          <!-- Slide 1: VIDEO LOKAL TANPA YOUTUBE -->
+          <div class="slide active">
+            <video class="game-video" controls autoplay muted loop>
+              <!-- GANTI path ini sesuai lokasi file videomu -->
+              <source src="video/Brain.mp4" type="video/mp4">
+              Browser kamu tidak mendukung pemutar video.
+            </video>
+          </div>
+
+          <!-- Slide 2: GAMBAR BRAIN OUT -->
+          <div class="slide">
+            <img src="gamea/brain.jpg" alt="BRAIN OUT">
+          </div>
+        </div>
+
+        <!-- Tombol panah kanan -->
+        <button class="slider-btn next" aria-label="Berikutnya">❯</button>
+      </div>
+
+      <!-- TEKS DESKRIPSI -->
+      <h1>BRAIN OUT</h1>
+      <p class="game-subtitle">
+      Brain Out adalah game puzzle logika yang menantang cara berpikir pemain 
+      dengan soal-soal unik, jebakan, dan di luar kebiasaan. Setiap level 
+      menghadirkan pertanyaan atau situasi yang tampak sederhana, tetapi 
+      membutuhkan pemikiran kreatif, logika terbalik, dan kejelian untuk
+      menyelesaikannya. Game ini tidak hanya menguji kecerdasan, tetapi 
+      juga melatih kesabaran dan daya pikir kritis.
+      </p>
+
+      <section class="game-section">
+        <h2>Fitur Utama</h2>
+        <ul>
+          <li>Puzzle logika unik dan tidak biasa.</li>
+          <li>Tingkat kesulitan meningkat secara bertahap.</li>
+          <li>Cocok untuk melatih kreativitas dan pemikiran kritis.</li>
+        </ul>
+      </section>
+
+      <section class="game-section">
+        <h2>Cara Main Singkat</h2>
+        <ol>
+          <li>Baca soal atau perintah dengan teliti.</li>
+          <li>Gunakan logika, intuisi, dan kreativitas untuk menjawab.</li>
+          <li>Buat kombinasi khusus (4 atau 5 permen) untuk mendapatkan permen spesial.</li>
+          <li>Geser, tekan, atau gunakan objek di layar sesuai petunjuk tersembunyi.</li>
+          <li>Jangan terpaku pada jawaban umum—berpikir “out of the box”.</li>
+        </ol>
+      </section>
+
+      <section class="game-section">
+        <h2>Info Game</h2>
+        <ul>
+          <li><strong>Genre:</strong> Puzzle / Logika</li>
+          <li><strong>Mode:</strong> offline</li>
+          <li><strong>Platform:</strong> Android, iOS</li>
+          <li><strong>Rating:</strong><span class="rating-stars"> ★★★★ 4</span></li>
+        </ul>
+      </section>
+    </article>
+  </main>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      const slider = document.querySelector('.media-slider');
+      if (!slider) return;
+
+      const slides = slider.querySelectorAll('.slide');
+      const prevBtn = slider.querySelector('.prev');
+      const nextBtn = slider.querySelector('.next');
+      let current = 0;
+
+      function showSlide(index) {
+        slides.forEach((s, i) => {
+          s.classList.toggle('active', i === index);
+        });
+      }
+
+      prevBtn.addEventListener('click', () => {
+        current = (current - 1 + slides.length) % slides.length;
+        showSlide(current);
+      });
+
+      nextBtn.addEventListener('click', () => {
+        current = (current + 1) % slides.length;
+        showSlide(current);
+      });
+    });
+  </script>
+   <footer>
+    @2025 - Helo Liaa
+  </footer>
+</body>
+</html>
