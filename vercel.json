@@ -1,9 +1,12 @@
 {
-  "cleanUrls": true,
-  "trailingSlash": false,
-  "cleanUrls": true,
-  "trailingSlash": false,
   "rewrites": [
-    { "source": "/", "destination": "/beranda.html" }
+    { "source": "/", "destination": "/index.html" },
+
+    { "source": "/adventure", "destination": "/adventure.html" },
+    { "source": "/among", "destination": "/among.html" },
+    { "source": "/apex", "destination": "/apex.html" },
+    { "source": "/profile", "destination": "/profile.html" }
+
+    
   ]
 }
